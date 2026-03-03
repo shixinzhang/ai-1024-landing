@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI_1024 专栏 - AI时代的实战指南</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #f59e0b;
+            --bg: #fafafa;
+            --card: #ffffff;
+            --text: #1f2937;
+            --text-muted: #6b7280;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --gradient-start: #6366f1;
+            --gradient-end: #8b5cf6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Noto Sans SC', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 32px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .hero h1 span {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* Floating Elements */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .floating-icon:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 20%; right: 15%; animation-delay: 2s; }
+        .floating-icon:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 4s; }
+        .floating-icon:nth-child(4) { bottom: 10%; right: 10%; animation-delay: 6s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: var(--card);
+            padding: 60px 20px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 2;
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        
+        .stat-item p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        /* Features Section */
+        .section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        
+        .feature-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        /* Content Preview */
+        .content-preview {
+            background: linear-gradient(180deg, #f0f4ff 0%, var(--bg) 100%);
+            padding: 100px 20px;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .content-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .content-card .tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .content-card h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .content-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .pricing-card {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .price {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .price span {
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        
+        .pricing-features li {
+            padding: 8px 0;
+            padding-left: 28px;
+            position: relative;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+            
+            .section {
+                padding: 60px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-icons">
+            <span class="floating-icon">🤖</span>
+            <span class="floating-icon">💡</span>
+            <span class="floating-icon">🚀</span>
+            <span class="floating-icon">⚡</span>
+        </div>
+        
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🔥</span>
+                <span>小报童热门专栏</span>
+            </div>
+            <h1>AI_1024</h1>
+            <p class="hero-subtitle">
+                AI 时代的实战指南 · 每周深度技术解析<br>
+                从入门到精通，掌握 AI 工具的核心用法
+            </p>
+            <div class="hero-cta">
+                <a href="https://xiaobot.net/p/ai_1024" class="btn btn-primary" target="_blank">
+                    <span>📖</span>
+                    <span>立即订阅</span>
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <span>👇</span>
+                    <span>了解更多</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>1000+</h3>
+                <p>订阅读者</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>深度文章</p>
+            </div>
+            <div class="stat-item">
+                <h3>4.9</h3>
+                <p>用户评分</p>
+            </div>
+            <div class="stat-item">
+                <h3>每周</h3>
+                <p>更新频率</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-title">
+            <h2>专栏特色</h2>
+            <p>系统化、实战化、深度化的 AI 技术内容，助你快速掌握 AI 工具</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>实战导向</h3>
+                <p>每篇文章都配有可运行的代码示例和实际案例，看完就能用，拒绝纸上谈兵。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔬</div>
+                <h3>深度解析</h3>
+                <p>不只是工具使用教程，更深入原理层面，让你知其然更知其所以然。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>前沿追踪</h3>
+                <p>紧跟 AI 领域最新发展，第一时间解读新技术、新工具、新趋势。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>社群互动</h3>
+                <p>订阅后加入专属读者群，与作者和其他读者交流讨论，共同进步。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🛠️</div>
+                <h3>工具评测</h3>
+                <p>深度评测各类 AI 工具，帮你筛选最适合的解决方案，节省试错成本。</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>系统课程</h3>
+                <p>从基础概念到高级应用，系统化的学习路径，零基础也能跟上。</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Content Preview -->
+    <section class="content-preview">
+        <div class="section-title">
+            <h2>专栏内容</h2>
+            <p>涵盖 AI 各个热门领域，从理论到实践全覆盖</p>
+        </div>
+        
+        <div class="content-grid">
+            <div class="content-card">
+                <span class="tag">基础入门</span>
+                <h4>AI 工具入门指南</h4>
+                <p>从零开始了解 ChatGPT、Claude 等大语言模型，掌握提示词工程基础</p>
+            </div>
+            
+            <div class="content-card">
+                <span class="tag">开发实战</span>
+                <h4>AI 辅助编程实战</h4>
+                <p>GitHub Copilot、Cursor 等 AI 编程工具的深度使用技巧</p>
+            </div>
+            
+            <div class="content-card">
+                <span class="tag">效率提升</span>
+                <h4>AI 提升工作效率</h4>
+                <p>用 AI 自动化处理文档、数据分析、报告生成等日常工作</p>
+            </div>
+            
+            <div class="content-card">
+                <span class="tag">内容创作</span>
+                <h4>AI 内容创作指南</h4>
+                <p>Midjourney、Stable Diffusion 等 AI 绘画工具的使用技巧</p>
+            </div>
+            
+            <div class="content-card">
+                <span class="tag">高级应用</span>
+                <h4>AI Agent 开发入门</h4>
+                <p>学习构建自己的 AI Agent，实现更复杂的自动化任务</p>
+            </div>
+            
+            <div class="content-card">
+                <span class="tag">行业洞察</span>
+                <h4>AI 行业趋势分析</h4>
+                <p>深度解读 AI 行业发展趋势，把握技术浪潮</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="section-title">
+            <h2>订阅方案</h2>
+            <p>一次订阅，永久受益</p>
+        </div>
+        
+        <div class="pricing-card">
+            <h3>🎁 限时优惠</h3>
+            <div class="price">
+                <span>¥</span>99
+            </div>
+            <ul class="pricing-features">
+                <li>专栏全部内容（已发布+未来更新）</li>
+                <li>专属读者交流群</li>
+                <li>代码示例和资源下载</li>
+                <li>一对一答疑机会</li>
+                <li>永久阅读权限</li>
+            </ul>
+            <a href="https://xiaobot.net/p/ai_1024" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">
+                <span>🔥</span>
+                <span>立即订阅</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p style="margin-bottom: 16px;">
+            <strong>AI_1024</strong> - AI 时代的实战指南
+        </p>
+        <p style="opacity: 0.8; margin-bottom: 24px;">
+            本页面由 AI 助手生成 · 数据来源：<a href="https://xiaobot.net/p/ai_1024" target="_blank">小报童</a>
+        </p>
+        <p style="font-size: 0.875rem; opacity: 0.6;">
+            © 2024 AI_1024 专栏 · 保留所有权利
+        </p>
+    </footer>
+</body>
+</html>
