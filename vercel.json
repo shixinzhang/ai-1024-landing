@@ -1,3 +1,20 @@
 {
-  "version": 2
+  "version": 2,
+  "name": "ai-1024-landing",
+  "builds": [
+    {
+      "src": "*.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/wechat",
+      "dest": "/wechat.html"
+    }
+  ]
 }
