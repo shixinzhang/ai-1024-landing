@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI_1024 专栏 - AI时代的实战指南</title>
+    <title>转型 AI 工程师｜提升你在 AI 时代的竞争力</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
@@ -26,11 +26,7 @@
             --glow-purple: rgba(168, 85, 247, 0.15);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: var(--bg-deep);
@@ -40,34 +36,20 @@
             overflow-x: hidden;
         }
 
-        /* Scan line effect */
         body::before {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: repeating-linear-gradient(0deg,
-                transparent,
-                transparent 2px,
-                rgba(0, 0, 0, 0.03) 2px,
-                rgba(0, 0, 0, 0.03) 4px);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
             pointer-events: none;
             z-index: 9999;
         }
 
-        /* Grid background */
         body::after {
             content: '';
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                linear-gradient(rgba(45, 212, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(45, 212, 255, 0.03) 1px, transparent 1px);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: linear-gradient(rgba(45,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(45,212,255,0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             pointer-events: none;
             z-index: 0;
@@ -81,7 +63,7 @@
             z-index: 1;
         }
 
-        /* ── HEADER ── */
+        /* Header */
         .header {
             padding: 64px 0 48px;
             border-bottom: 1px solid var(--border-bright);
@@ -92,8 +74,8 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(168, 85, 247, 0.1);
-            border: 1px solid rgba(168, 85, 247, 0.3);
+            background: rgba(168,85,247,0.1);
+            border: 1px solid rgba(168,85,247,0.3);
             color: var(--accent-purple);
             font-family: 'Share Tech Mono', monospace;
             font-size: 11px;
@@ -106,36 +88,26 @@
         }
 
         @keyframes pulse-border {
-            0%, 100% {
-                border-color: rgba(168, 85, 247, 0.3);
-                box-shadow: 0 0 0 0 rgba(168, 85, 247, 0);
-            }
-            50% {
-                border-color: rgba(168, 85, 247, 0.7);
-                box-shadow: 0 0 12px rgba(168, 85, 247, 0.2);
-            }
+            0%, 100% { border-color: rgba(168,85,247,0.3); box-shadow: 0 0 0 0 rgba(168,85,247,0); }
+            50% { border-color: rgba(168,85,247,0.7); box-shadow: 0 0 12px rgba(168,85,247,0.2); }
         }
 
         .header-badge::before {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 6px; height: 6px;
             background: var(--accent-purple);
             border-radius: 50%;
             animation: blink 1.2s ease infinite;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.2; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
 
         .header h1 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(40px, 6vw, 72px);
+            font-size: clamp(32px, 5vw, 56px);
             font-weight: 800;
-            line-height: 1;
-            letter-spacing: -2px;
+            line-height: 1.2;
+            letter-spacing: -1px;
             margin-bottom: 16px;
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
             -webkit-background-clip: text;
@@ -145,10 +117,10 @@
 
         .header h1 .subtitle {
             display: block;
-            font-size: 0.35em;
+            font-size: 0.4em;
             font-weight: 400;
             font-family: 'Share Tech Mono', monospace;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             color: var(--text-secondary);
             -webkit-text-fill-color: var(--text-secondary);
             margin-top: 12px;
@@ -158,72 +130,13 @@
             color: var(--text-secondary);
             font-size: 16px;
             line-height: 1.8;
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: 32px;
         }
 
-        .header-desc strong {
-            color: var(--accent-cyan);
-        }
+        .header-desc strong { color: var(--accent-cyan); }
 
-        /* Stats row */
-        .stats-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-
-        .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            padding: 16px 24px;
-            min-width: 140px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-        }
-
-        .stat-card.cyan::before { background: var(--accent-cyan); }
-        .stat-card.purple::before { background: var(--accent-purple); }
-        .stat-card.pink::before { background: var(--accent-pink); }
-        .stat-card.green::before { background: var(--accent-green); }
-
-        .stat-label {
-            font-size: 10px;
-            color: var(--text-dim);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            font-family: 'Share Tech Mono', monospace;
-            margin-bottom: 6px;
-        }
-
-        .stat-value {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 32px;
-            font-weight: 400;
-            line-height: 1;
-        }
-
-        .stat-card.cyan .stat-value { color: var(--accent-cyan); }
-        .stat-card.purple .stat-value { color: var(--accent-purple); }
-        .stat-card.pink .stat-value { color: var(--accent-pink); }
-        .stat-card.green .stat-value { color: var(--accent-green); }
-
-        /* CTA Buttons */
-        .cta-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
+        .cta-row { display: flex; gap: 16px; flex-wrap: wrap; }
 
         .btn {
             display: inline-flex;
@@ -237,8 +150,6 @@
             cursor: pointer;
             transition: all 0.3s ease;
             font-family: 'Noto Sans SC', sans-serif;
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-primary {
@@ -249,7 +160,7 @@
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(168, 85, 247, 0.4);
+            box-shadow: 0 8px 30px rgba(168,85,247,0.4);
         }
 
         .btn-secondary {
@@ -261,10 +172,21 @@
         .btn-secondary:hover {
             border-color: var(--accent-cyan);
             color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(45, 212, 255, 0.2);
+            box-shadow: 0 0 20px rgba(45,212,255,0.2);
         }
 
-        /* ── SECTIONS ── */
+        .btn-green {
+            background: linear-gradient(135deg, var(--accent-green), #00b894);
+            color: #04060d;
+            clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+        }
+
+        .btn-green:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0,232,122,0.4);
+        }
+
+        /* Section */
         .section {
             padding: 64px 0;
             border-bottom: 1px solid var(--border);
@@ -290,134 +212,183 @@
             background: linear-gradient(90deg, var(--border-bright), transparent);
         }
 
-        /* ── FEATURES ── */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 16px;
-        }
-
-        .feature-card {
+        /* Author */
+        .author-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 24px;
+            padding: 32px;
             position: relative;
-            transition: all 0.3s ease;
         }
 
-        .feature-card:hover {
-            border-color: var(--border-bright);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .feature-card::before {
+        .author-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
+            top: 0; left: 0; width: 3px; height: 100%;
             background: var(--accent-cyan);
-            opacity: 0;
-            transition: opacity 0.3s ease;
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-icon {
-            font-size: 24px;
-            margin-bottom: 16px;
-        }
-
-        .feature-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .feature-card p {
-            color: var(--text-secondary);
-            font-size: 13px;
-            line-height: 1.7;
-        }
-
-        /* ── CONTENT ── */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 12px;
-        }
-
-        .content-item {
-            background: var(--bg-row);
-            border: 1px solid var(--border);
-            padding: 16px 20px;
+        .author-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            transition: all 0.2s ease;
+            margin-bottom: 20px;
         }
 
-        .content-item:hover {
-            background: var(--bg-card);
-            border-color: var(--border-bright);
+        .author-avatar {
+            width: 64px; height: 64px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
         }
 
-        .content-num {
-            font-family: 'Share Tech Mono', monospace;
-            font-size: 12px;
-            color: var(--text-dim);
-            min-width: 24px;
-        }
-
-        .content-text h4 {
-            font-size: 14px;
-            font-weight: 500;
+        .author-name h3 {
+            font-size: 20px;
+            font-weight: 600;
             margin-bottom: 4px;
         }
 
-        .content-text p {
-            font-size: 12px;
-            color: var(--text-dim);
+        .author-name p {
+            color: var(--text-secondary);
+            font-size: 13px;
         }
 
-        .content-tag {
-            margin-left: auto;
-            font-size: 10px;
+        .author-bio {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .author-bio li {
+            margin-bottom: 8px;
+            list-style: none;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .author-bio li::before {
+            content: '›';
+            position: absolute;
+            left: 0;
             color: var(--accent-cyan);
-            border: 1px solid rgba(45, 212, 255, 0.3);
+        }
+
+        /* Syllabus */
+        .phase {
+            margin-bottom: 32px;
+        }
+
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent-purple);
+        }
+
+        .phase-num {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            color: var(--accent-purple);
+        }
+
+        .phase-title {
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .phase-goal {
+            margin-left: auto;
+            font-size: 12px;
+            color: var(--text-dim);
+            max-width: 400px;
+            text-align: right;
+        }
+
+        .lesson-list {
+            list-style: none;
+        }
+
+        .lesson-list li {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .lesson-list li:hover {
+            background: var(--bg-row);
+        }
+
+        .lesson-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            flex: 1;
+        }
+
+        .lesson-list a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .lesson-tag {
+            font-size: 10px;
+            color: var(--accent-green);
+            border: 1px solid rgba(0,232,122,0.3);
             padding: 2px 8px;
             font-family: 'Share Tech Mono', monospace;
         }
 
-        /* ── PRICING ── */
+        .lesson-tag.upcoming {
+            color: var(--text-dim);
+            border-color: var(--text-dim);
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
         .pricing-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            padding: 40px;
-            max-width: 480px;
-            margin: 0 auto;
+            padding: 32px;
             position: relative;
-            overflow: hidden;
         }
 
-        .pricing-card::before {
+        .pricing-card.popular::before {
+            content: '推荐';
+            position: absolute;
+            top: -1px;
+            right: 20px;
+            background: var(--accent-pink);
+            color: white;
+            font-size: 11px;
+            padding: 4px 12px;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .pricing-card::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-pink));
+            top: 0; left: 0; right: 0; height: 2px;
         }
+
+        .pricing-card.yearly::after { background: var(--accent-cyan); }
+        .pricing-card.permanent::after { background: var(--accent-purple); }
 
         .pricing-header {
             text-align: center;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .pricing-header h3 {
@@ -425,35 +396,38 @@
             color: var(--text-secondary);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
 
         .price {
             font-family: 'Share Tech Mono', monospace;
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 400;
-            color: var(--accent-cyan);
             line-height: 1;
         }
 
+        .pricing-card.yearly .price { color: var(--accent-cyan); }
+        .pricing-card.permanent .price { color: var(--accent-purple); }
+
         .price span {
-            font-size: 16px;
+            font-size: 14px;
             color: var(--text-dim);
         }
 
         .pricing-features {
             list-style: none;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
+            min-height: 160px;
         }
 
         .pricing-features li {
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--border);
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .pricing-features li::before {
@@ -462,7 +436,11 @@
             font-family: 'Share Tech Mono', monospace;
         }
 
-        /* ── FOOTER ── */
+        .highlight {
+            color: var(--accent-yellow);
+        }
+
+        /* Footer */
         footer {
             padding: 48px 0;
             text-align: center;
@@ -470,33 +448,12 @@
             font-size: 12px;
         }
 
-        footer a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-        }
+        footer a { color: var(--accent-cyan); text-decoration: none; }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .header h1 {
-                font-size: 36px;
-            }
-            
-            .stats-row {
-                justify-content: center;
-            }
-            
-            .stat-card {
-                min-width: calc(50% - 8px);
-            }
-            
-            .cta-row {
-                flex-direction: column;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
+            .header h1 { font-size: 28px; }
+            .phase-goal { display: none; }
+            .pricing-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -508,156 +465,207 @@
                 <span>小报童热门专栏</span>
             </div>
             <h1>
-                AI_1024
-                <span class="subtitle">AI TIMES PRACTICAL GUIDE</span>
+                转型 AI 工程师
+                <span class="subtitle">提升你在 AI 时代的竞争力</span>
             </h1>
             <p class="header-desc">
-                AI 时代的实战指南 · 每周深度技术解析<br>
-                从入门到精通，掌握 <strong>AI 工具</strong> 的核心用法
+                系统化的 <strong>AI 应用开发</strong> 实战课程，从零基础到企业级 AI 项目开发<br>
+                涵盖 API 调用、RAG、Agent、低代码平台等核心技术栈
             </p>
-            
-            <div class="stats-row">
-                <div class="stat-card cyan">
-                    <div class="stat-label">Readers</div>
-                    <div class="stat-value">1000+</div>
-                </div>
-                <div class="stat-card purple">
-                    <div class="stat-label">Articles</div>
-                    <div class="stat-value">50+</div>
-                </div>
-                <div class="stat-card pink">
-                    <div class="stat-label">Rating</div>
-                    <div class="stat-value">4.9</div>
-                </div>
-                <div class="stat-card green">
-                    <div class="stat-label">Update</div>
-                    <div class="stat-value">Weekly</div>
-                </div>
-            </div>
-            
             <div class="cta-row">
                 <a href="https://xiaobot.net/p/earnByYourself" class="btn btn-primary" target="_blank">
                     <span>⚡</span>
-                    <span>立即订阅</span>
+                    <span>订阅年卡 ¥169</span>
                 </a>
-                <a href="#features" class="btn btn-secondary">
-                    <span>›</span>
-                    <span>查看详情</span>
+                <a href="https://xiaobot.net/p/ai_1024" class="btn btn-green" target="_blank">
+                    <span>🔥</span>
+                    <span>永久权限 ¥498</span>
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Features Section -->
-    <section class="section" id="features">
+    <!-- Author Section -->
+    <section class="section">
         <div class="container">
             <div class="section-title">
-                <h2>专栏特色</h2>
+                <h2>作者简介</h2>
                 <div class="line"></div>
             </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>实战导向</h3>
-                    <p>每篇文章都配有可运行的代码示例和实际案例，看完就能用，拒绝纸上谈兵。</p>
+            <div class="author-card">
+                <div class="author-header">
+                    <div class="author-avatar">👨‍💻</div>
+                    <div class="author-name">
+                        <h3>拭心 (Shixin)</h3>
+                        <p>畅销书作者 / 前字节跳动技术专家</p>
+                    </div>
                 </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔬</div>
-                    <h3>深度解析</h3>
-                    <p>不只是工具使用教程，更深入原理层面，让你知其然更知其所以然。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>前沿追踪</h3>
-                    <p>紧跟 AI 领域最新发展，第一时间解读新技术、新工具、新趋势。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">💬</div>
-                    <h3>社群互动</h3>
-                    <p>订阅后加入专属读者群，与作者和其他读者交流讨论，共同进步。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🛠️</div>
-                    <h3>工具评测</h3>
-                    <p>深度评测各类 AI 工具，帮你筛选最适合的解决方案，节省试错成本。</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>系统课程</h3>
-                    <p>从基础概念到高级应用，系统化的学习路径，零基础也能跟上。</p>
-                </div>
+                <ul class="author-bio">
+                    <li>日常工作完全在做 AI 开发，有丰富的一线实践经验</li>
+                    <li>担任谷歌和字节的技术社区专家，能较早获取一手国内外新鲜 AI 进展</li>
+                    <li>十多年技术写作经验，擅长通俗教学，让复杂概念变得易懂</li>
+                    <li>专注于帮助技术人员转型 AI 领域，已有众多学员成功转型案例</li>
+                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Content Section -->
+    <!-- Syllabus Section -->
     <section class="section">
         <div class="container">
             <div class="section-title">
-                <h2>专栏内容</h2>
+                <h2>硬核知识体系</h2>
                 <div class="line"></div>
             </div>
-            
-            <div class="content-grid">
-                <div class="content-item">
-                    <div class="content-num">01</div>
-                    <div class="content-text">
-                        <h4>AI 工具入门指南</h4>
-                        <p>从零开始了解 ChatGPT、Claude 等大语言模型</p>
-                    </div>
-                    <div class="content-tag">基础</div>
+            <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 14px;">
+                六阶段系统化学习路径，帮助你搭建扎实的 AI 技术体系
+            </p>
+
+            <!-- Phase 1 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <span class="phase-num">PHASE 01</span>
+                    <span class="phase-title">打破思维认知 —— 觉醒篇</span>
+                    <span class="phase-goal">认识 AI 工程师的工作内容和能力要求，建立 AI 编程新思维</span>
                 </div>
-                
-                <div class="content-item">
-                    <div class="content-num">02</div>
-                    <div class="content-text">
-                        <h4>AI 辅助编程实战</h4>
-                        <p>GitHub Copilot、Cursor 等 AI 编程工具深度使用</p>
-                    </div>
-                    <div class="content-tag">开发</div>
+                <ul class="lesson-list">
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/d35ba902-7add-4b4f-afa8-8bb4fdd6c815" target="_blank">第 01 讲 | 职业全景：为什么要转型 AI 应用工程师，这个岗位需要什么能力？</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/be49d386-2f9e-4f6b-ba9d-decdc9af3aed" target="_blank">第 02 讲 | 别再设限：全栈比想象中容易得多</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/469c7ed8-e0d4-4f03-8151-4eeb75f56e2b" target="_blank">第 03 讲 | 编程新范式：如何高效 Vibe Coding</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/919ded02-4bdd-4cc1-9375-90cf65f36561" target="_blank">第 04 讲 | 提示词工程：你缺的不只是专业术语</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/1d304da0-b9d3-4254-932a-3a7175b18cf6" target="_blank">第一阶段小结</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <span class="phase-num">PHASE 02</span>
+                    <span class="phase-title">通过 API 构建 AI 应用 —— 基础篇</span>
+                    <span class="phase-goal">学会通过代码优雅地控制大模型，跨越转型 AI 工程师的第一道技术门槛</span>
                 </div>
-                
-                <div class="content-item">
-                    <div class="content-num">03</div>
-                    <div class="content-text">
-                        <h4>AI 提升工作效率</h4>
-                        <p>用 AI 自动化处理文档、数据分析、报告生成</p>
-                    </div>
-                    <div class="content-tag">效率</div>
+                <ul class="lesson-list">
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/ea47143a-0567-43be-8bae-291bff233d31" target="_blank">第 05 讲 | API 避坑指南：如何像老手一样优雅地调用大模型</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/71f1c709-b5d4-4d02-a0b6-c07c26a6da3d" target="_blank">第 06 讲 | 多模态全览：文/图/音视频大模型一网打尽</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/6872d7eb-1f13-4e3b-848a-0e236771fba7" target="_blank">第 07 讲 | 实战：开发一个多模态（文本、生图、生成视频）聊天应用</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/5ca996f4-5cf5-44e7-8325-d239d331d61e" target="_blank">第 08 讲 | 上下文工程：让你的应用怎么聊都懂用户</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/eb830ece-2021-4c76-8358-0007cd07d652" target="_blank">第二阶段小结</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <span class="phase-num">PHASE 03</span>
+                    <span class="phase-title">外挂大脑 RAG 开发实战 —— 进阶篇</span>
+                    <span class="phase-goal">具备解决大模型"胡说八道"和"不懂私有数据"的能力，这是目前企业招聘最看重的技能</span>
                 </div>
-                
-                <div class="content-item">
-                    <div class="content-num">04</div>
-                    <div class="content-text">
-                        <h4>AI 内容创作指南</h4>
-                        <p>Midjourney、Stable Diffusion 等 AI 绘画工具</p>
-                    </div>
-                    <div class="content-tag">创作</div>
+                <ul class="lesson-list">
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/68ba5249-71e0-46b9-a845-631fc194d1b9" target="_blank">第 09 讲 | 理解 RAG 全貌：如何实现语义搜索？</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/e83b9071-5dfd-454b-ab3c-9ce59f3f9c87" target="_blank">第 10 讲｜RAG 实现详解（上）：数据导入、文本切块和 Embedding</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/24821802-4446-4e1e-a124-01bc1d854f02" target="_blank">第 11 讲｜RAG 实现详解（下）：向量数据库、检索前处理、检索后处理、响应生成</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/22178841-2e45-4bf5-99d5-7fbe156c8699" target="_blank">第 12 讲｜RAG 实战：电商智能客服从 0 到 1（上）</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/29a82fbb-1f53-4d7c-bcd1-445c6d4bf435" target="_blank">第 13 讲｜RAG 实战：电商智能客服从 0 到 1（下）</a>
+                    </li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/c31e12d0-efcd-4932-b99f-1fe67ca6397d" target="_blank">第三阶段小结</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <span class="phase-num">PHASE 04</span>
+                    <span class="phase-title">低代码搭建 Agent 实战 —— 提效篇</span>
+                    <span class="phase-goal">掌握很多企业都在使用的 Agent 低代码平台 — Coze 和 Dify</span>
                 </div>
-                
-                <div class="content-item">
-                    <div class="content-num">05</div>
-                    <div class="content-text">
-                        <h4>AI Agent 开发入门</h4>
-                        <p>学习构建自己的 AI Agent，实现复杂自动化</p>
-                    </div>
-                    <div class="content-tag">进阶</div>
+                <ul class="lesson-list">
+                    <li><span class="lesson-tag upcoming">待发布</span>第 14 讲 | 选型指南：Agent 初探与低代码平台对比</li>
+                    <li>
+                        <span class="lesson-tag">已发布</span>
+                        <a href="https://xiaobot.net/post/81b3e705-7207-4555-b680-a33e72266da7" target="_blank">第 15 讲 | Coze 智能体实战：从零上手 Skills</a>
+                    </li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 16 讲 | Coze 实战：可视化编程——工作流编排</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 17 讲 | Dify 工程化 (上)：私有化部署与知识库搭建</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 1x 讲 | Dify 工程化 (下)：打造企业级 AI 中台</li>
+                </ul>
+            </div>
+
+            <!-- Phase 5 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <span class="phase-num">PHASE 05</span>
+                    <span class="phase-title">自主智能-代码级 Agent 与编排 —— 高阶篇</span>
+                    <span class="phase-goal">深入代码底层，让 AI 拥有"大脑"和"手"，掌握 2026 年最硬核的 Agent 架构开发</span>
                 </div>
-                
-                <div class="content-item">
-                    <div class="content-num">06</div>
-                    <div class="content-text">
-                        <h4>AI 行业趋势分析</h4>
-                        <p>深度解读 AI 行业发展趋势，把握技术浪潮</p>
-                    </div>
-                    <div class="content-tag">洞察</div>
+                <ul class="lesson-list">
+                    <li><span class="lesson-tag upcoming">待发布</span>第 18 讲 | Agent 核心基石：Function Calling 与 ReAct 模式</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 19 讲 | AI 时代的标准接口：MCP 实战</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 20 讲 | 告别胶水代码：用 LangChain 重构你的 AI 代码</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 21 讲 | 架构升级：LangGraph 如何让 Agent 自我纠错</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 22 讲 | 组建虚拟团队：Multi-Agent 多智能体编排实战</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 23 讲 | 毕业大作业：打造你的"深度研究助手"</li>
+                </ul>
+            </div>
+
+            <!-- Phase 6 -->
+            <div class="phase">
+                <div class="phase-header">
+                    <span class="phase-num">PHASE 06</span>
+                    <span class="phase-title">跨越与重生</span>
+                    <span class="phase-goal">结合招聘要求，给出实用的简历、面试指引，让读者更容易转向 AI 开发岗位</span>
                 </div>
+                <ul class="lesson-list">
+                    <li><span class="lesson-tag upcoming">待发布</span>加餐｜AI Agent 开发简历编写指导</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>加餐｜AI Agent 开发面试经验分享</li>
+                    <li><span class="lesson-tag upcoming">待发布</span>第 24 讲 | 专栏结语：AI 工程师的职业护城河</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -669,27 +677,49 @@
                 <h2>订阅方案</h2>
                 <div class="line"></div>
             </div>
-            
-            <div class="pricing-card">
-                <div class="pricing-header">
-                    <h3>限时优惠</h3>
-                    <div class="price">
-                        ¥99<span>/永久</span>
+            <div class="pricing-grid">
+                <!-- Yearly -->
+                <div class="pricing-card yearly">
+                    <div class="pricing-header">
+                        <h3>年度订阅</h3>
+                        <div class="price">
+                            ¥169<span>/年</span>
+                        </div>
                     </div>
+                    <ul class="pricing-features">
+                        <li>一年内所有更新内容</li>
+                        <li>专属读者交流群</li>
+                        <li>代码示例和资源下载</li>
+                        <li>技术问题答疑</li>
+                        <li>到期后可续费或升级永久版</li>
+                    </ul>
+                    <a href="https://xiaobot.net/p/earnByYourself" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">
+                        <span>⚡</span>
+                        <span>订阅年卡</span>
+                    </a>
                 </div>
-                
-                <ul class="pricing-features">
-                    <li>专栏全部内容（已发布+未来更新）</li>
-                    <li>专属读者交流群</li>
-                    <li>代码示例和资源下载</li>
-                    <li>一对一答疑机会</li>
-                    <li>永久阅读权限</li>
-                </ul>
-                
-                <a href="https://xiaobot.net/p/earnByYourself" class="btn btn-primary" target="_blank" style="width: 100%; justify-content: center;">
-                    <span>⚡</span>
-                    <span>立即订阅</span>
-                </a>
+
+                <!-- Permanent -->
+                <div class="pricing-card permanent popular">
+                    <div class="pricing-header">
+                        <h3>永久权限</h3>
+                        <div class="price">
+                            ¥498<span>/永久</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="highlight">永久阅读权限</span>（所有更新）</li>
+                        <li>专属读者交流群</li>
+                        <li>代码示例和资源下载</li>
+                        <li><span class="highlight">一对一答疑机会</span></li>
+                        <li><span class="highlight">简历修改服务</span>（价值 ¥299）</li>
+                        <li>面试指导优先权</li>
+                    </ul>
+                    <a href="https://xiaobot.net/p/ai_1024" class="btn btn-green" target="_blank" style="width: 100%; justify-content: center;">
+                        <span>🔥</span>
+                        <span>获取永久权限</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -697,9 +727,9 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>AI_1024 专栏 · AI时代的实战指南</p>
+            <p>转型 AI 工程师 · 提升你在 AI 时代的竞争力</p>
             <p style="margin-top: 8px; opacity: 0.6;">
-                数据来源：<a href="https://xiaobot.net/p/ai_1024" target="_blank">xiaobot.net</a>
+                作者：拭心 (Shixin) · 数据来源：<a href="https://xiaobot.net/p/ai_1024" target="_blank">小报童</a>
             </p>
         </div>
     </footer>
